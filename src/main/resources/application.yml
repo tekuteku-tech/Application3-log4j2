@@ -1,4 +1,5 @@
 spring:
   main:
-    banner-mode: off
+    banner-mode: off # 起動時のバナーをオフ
+    log-startup-info: false # 起動時のログ出力をオフ
 
