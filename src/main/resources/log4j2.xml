@@ -10,15 +10,24 @@
 	</Properties>
 
 	<appenders>
-		<Console name="Console" target="SYSTEM_OUT">
+		<Console name="STD_OUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="${date}, [${app_name}], [ %-5level ], %logger{10}, %msg %n"/>
+		</Console>
+		<Console name="STD_ERR" target="SYSTEM_ERR">
 			<PatternLayout pattern="${date}, [${app_name}], [ %-5level ], %logger{10}, %msg %n"/>
 		</Console>
 	</appenders>
 
 	<loggers>
 		<root level="info">
-			<appender-ref ref="Console" />
+			<AppenderRef ref="STD_OUT" />
 		</root>
+		<Logger name="com.example.demo" level="error" additivity="false">
+			<AppenderRef ref="STD_ERR" />
+		</Logger>
+		<Logger name="com.example.demo" level="info" additivity="true">
+			<AppenderRef ref="STD_OUT" />
+		</Logger>
 	</loggers>
 
 </configuration>
