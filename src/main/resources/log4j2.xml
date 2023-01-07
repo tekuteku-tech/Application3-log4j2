@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- log4j2自体のログ表示はOFFにする -->
+<configuration status="OFF">
+
+	<!-- プロパティ設定 -->
+	<Properties>
+		<Property name="app_name">log4j2アプリ</Property>
+		<Property name="date">%d{yyyy-MM-dd HH:mm:ss.SSS}</Property>
+	</Properties>
+
+	<appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${date}, [${app_name}], [ %-5level ], %logger{10}, %msg %n"/>
+		</Console>
+	</appenders>
+
+	<loggers>
+		<root level="info">
+			<appender-ref ref="Console" />
+		</root>
+	</loggers>
+
+</configuration>
